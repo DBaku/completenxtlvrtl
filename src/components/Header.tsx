@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag, User, Search } from 'lucide-react';
+import { Menu, X, ShoppingBag, User, Search, Upload } from 'lucide-react';
 import { Link } from './Navigation';
 import Logo from './Logo';
 import Cart from './Cart';
@@ -77,7 +77,6 @@ const Header: React.FC = () => {
   }, []);
 
   const handleSearch = async (query: string) => {
-    // Implement search logic here
     toast.success(`Searching for: ${query}`);
   };
 
@@ -86,7 +85,6 @@ const Header: React.FC = () => {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
       
-      // Clear any auth-related local storage
       localStorage.removeItem('supabase.auth.token');
       localStorage.removeItem('supabase.auth.expires_at');
       
@@ -97,6 +95,10 @@ const Header: React.FC = () => {
       console.error('Error signing out:', error);
       toast.error('Error signing out');
     }
+  };
+
+  const goToAdmin = () => {
+    window.location.href = '/admin';
   };
 
   return (
@@ -119,12 +121,13 @@ const Header: React.FC = () => {
               <Link href="#exhibitions" className="nav-link">Exhibitions</Link>
               <Link href="#contact" className="nav-link">Contact</Link>
               {isAdmin && (
-                <a 
-                  href="/admin"
-                  className="text-gold-600 font-medium hover:text-gold-700 transition-colors duration-300"
+                <button 
+                  onClick={goToAdmin}
+                  className="flex items-center space-x-2 text-gold-600 font-medium hover:text-gold-700 transition-colors duration-300"
                 >
-                  Admin Panel
-                </a>
+                  <Upload size={20} />
+                  <span>Upload Artwork</span>
+                </button>
               )}
             </nav>
             
@@ -201,13 +204,16 @@ const Header: React.FC = () => {
                   Contact
                 </Link>
                 {isAdmin && (
-                  <a 
-                    href="/admin"
-                    className="text-lg py-2 border-b border-gray-100 text-gold-600 font-medium"
-                    onClick={() => setIsMenuOpen(false)}
+                  <button 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      goToAdmin();
+                    }}
+                    className="flex items-center space-x-2 text-lg py-2 border-b border-gray-100 text-gold-600 font-medium"
                   >
-                    Admin Panel
-                  </a>
+                    <Upload size={20} />
+                    <span>Upload Artwork</span>
+                  </button>
                 )}
               </nav>
               
