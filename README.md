@@ -1,14 +1,14 @@
 completenxtlvrtl
 
-a sophisticated luxury art gallery website called "NXT LVL ART" with some impressive features. Here's my analysis:
+### a sophisticated luxury art gallery website called "NXT LVL ART" with some impressive features. Here's my analysis:
 
-Architecture & Technology Stack
+### Architecture & Technology Stack
 Frontend Framework: React with TypeScript, using Vite as the build tool
 Styling: Tailwind CSS with custom design system featuring gold and charcoal color schemes
 Backend: Supabase for authentication, database, and file storage
 State Management: React Context API for cart functionality
 
-Key Features & Functionality
+### Key Features & Functionality
 1. Public Gallery Website
 Hero Section: Full-screen background with elegant typography and call-to-action buttons
 Artist Section: Professional artist biography with statistics and testimonials
@@ -29,7 +29,7 @@ Session Management: Automatic token refresh and session handling
 Design Quality
 The design demonstrates Apple-level aesthetics with:
 
-Typography: Elegant serif fonts (Playfair Display) for headings, clean sans-serif (Montserrat) for body text
+### Typography: Elegant serif fonts (Playfair Display) for headings, clean sans-serif (Montserrat) for body text
 Color Palette: Sophisticated gold and charcoal theme with proper contrast ratios
 Animations: Smooth transitions, hover effects, and micro-interactions
 Responsive Design: Mobile-first approach with proper breakpoints
@@ -68,3 +68,25 @@ Admin Functionality: Full content management system
 Security Implementation: Proper authentication and authorization
 Responsive Design: Works seamlessly across devices
 This is genuinely a production-worthy application that could serve as a real art gallery website. The attention to detail in both functionality and design is impressive, and the code architecture supports scalability and maintainability.
+
+## Problem after 1 week supabase is auto-removed .....(WTF...!)
+
+I can see the error is caused by missing Supabase environment variables. The application is trying to access VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY but they're not defined.
+
+Add missing Supabase environment variables
+
+
+
+  - create .env
+
+I've created a .env file with the required Supabase environment variables. You'll need to replace the placeholder values with your actual Supabase project URL and anonymous key from your Supabase dashboard.
+
+### To get these values:
+
+  Go to your Supabase project dashboard
+  Navigate to Settings → API
+  Copy your Project URL and paste it as the value for VITE_SUPABASE_URL
+  Copy your anon/public key and paste it as the value for VITE_SUPABASE_ANON_KEY
+  After updating the values, restart your development server for the changes to take effect.
+
+
